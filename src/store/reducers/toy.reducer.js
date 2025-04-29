@@ -47,7 +47,7 @@ export function toyReducer(state = initialState, cmd = {}) {
         case TOY_UNDO:
             return {
                 ...state,
-                cars: [...state.lastToys]
+                toys: [...state.lastToys]
             }
 
         case SET_IS_LOADING:
