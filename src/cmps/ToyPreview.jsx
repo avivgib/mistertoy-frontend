@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
+import defaultToyImg from '../assets/img/dog-doll.jpg'
 
 export function ToyPreview({ toy }) {
     return (
         <article className="toy-preview">
-            <img src={toy.imgUrl} alt={`Toy: ${toy.name}`} />
+            <img src={defaultToyImg} alt={`Toy: ${toy.name}`} />
 
             <h4>{toy.name}</h4>
             

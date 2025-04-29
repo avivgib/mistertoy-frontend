@@ -1,6 +1,7 @@
 import { ToyPreview } from "./ToyPreview.jsx"
 
 export function ToyList({ toys, onRemoveToy }) {
+    if (!toys || !toys.length) return <p>No toys to show</p>
 
     return (
         <ul className="toy-list">
