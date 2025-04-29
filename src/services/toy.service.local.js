@@ -22,9 +22,9 @@ export const toyServiceLocal = {
 function query(filterBy = {}) {
     return storageService.query(STORAGE_KEY)
         .then(toys => {
-            if (!filterBy.txt) filterBy.txt = ''
+            if (!filterBy.name) filterBy.name = ''
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
-            const regExp = new RegExp(filterBy.txt, 'i')
+            const regExp = new RegExp(filterBy.name, 'i')
             return toys.filter(toy =>
             {
                 console.log(toy.vendor, regExp.test(toy.vendor))
@@ -83,7 +83,7 @@ function getRandomToy() {
 
 function getDefaultFilter() {
     return { 
-        txt: '', 
+        name: '', 
         inStock: undefined,
         labels: [],
         sortBy: 'name' 
