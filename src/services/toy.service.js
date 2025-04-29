@@ -1,6 +1,6 @@
 import { utilService } from './util.service.js'
 import { toyServiceLocal } from './toy.service.local.js'
-// import { httpService } from './http.service.js'
+import { httpService } from './http.service.js'
 import defaultToyImg from '../../src/assets/img/dog-doll.jpg'
 
 const BASE_URL = 'toy/'
@@ -18,27 +18,28 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
-    // return httpService.get(BASE_URL, filterBy)
-    return toyServiceLocal.query(filterBy)
+    console.log('filterBy', filterBy)
+    return httpService.get(BASE_URL, filterBy)
+    // return toyServiceLocal.query(filterBy)
 }
 
 function getById(toyId) {
-    // return httpService.get(BASE_URL + toyId)
-    return toyServiceLocal.getById(toyId)
+    return httpService.get(BASE_URL + toyId)
+    // return toyServiceLocal.getById(toyId)
 }
 
 function remove(toyId) {
-    // return httpService.delete(BASE_URL + toyId)
-    return toyServiceLocal.remove(toyId)
+    return httpService.delete(BASE_URL + toyId)
+    // return toyServiceLocal.remove(toyId)
 }
 
 function save(toy) {
-    // if (toy._id) {
-    //     return httpService.put(BASE_URL + toy._id, toy)
-    // } else {
-    //     return httpService.post(BASE_URL, toy)
-    // }
-    return toyServiceLocal.save(toy)
+    if (toy._id) {
+        return httpService.put(BASE_URL + toy._id, toy)
+    } else {
+        return httpService.post(BASE_URL, toy)
+    }
+    // return toyServiceLocal.save(toy)
 }
 
 function getEmptyToy() {
