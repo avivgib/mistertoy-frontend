@@ -25,19 +25,23 @@
 .filter-form {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
 }
 
 .filter-group {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    margin: 1rem 0;
 }
 
 .filter-label {
     font-size: 0.9rem;
     font-weight: 400;
     color: #555;
+}
+
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
 }
 
 .filter-input,
