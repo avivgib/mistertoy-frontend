@@ -40,7 +40,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
     return (
         <section className="toy-filter full main-layout">
-            <h2 className="filter-title">Toys Filter</h2>
+            <h2 className="filter-title">Filters</h2>
             <form className="filter-form">
 
                 <div className="filter-row">

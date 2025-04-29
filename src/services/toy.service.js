@@ -58,7 +58,7 @@ function getRandomToy() {
     const randomLabels = shuffledLabels.slice(0, numOfLabels)
 
     return {
-        _id: utilService.makeId(),
+        // _id: utilService.makeId(),
         name: 'Talking Doll',
         imgUrl: defaultToyImg,
         price: utilService.getRandomIntInclusive(20, 200),
