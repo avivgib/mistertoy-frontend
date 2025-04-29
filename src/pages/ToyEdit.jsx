@@ -33,12 +33,36 @@ export function ToyEdit() {
         hasChanges.current = true
     }
 
+    function getNonEmptyFields(obj) {
+        const result = {}
+    
+        for (const key in obj) {
+            const val = obj[key]
+    
+            const isEmpty =
+                val === '' ||
+                val === null ||
+                val === undefined ||
+                (Array.isArray(val) && val.length === 0)
+    
+            if (!isEmpty) result[key] = val
+        }
+    
+        return result
+    }    
+
     function onSaveToy(ev) {
         ev.preventDefault()
-        if (!toyToEdit.price) toyToEdit.price = 1000
-        console.log('CMP EDIT:', toyToEdit);
+
+        const randomToy = toyService.getRandomToy()
+        console.log('Random Toy: ', randomToy)
         
-        saveToy(toyToEdit)
+        const cleanedToy = getNonEmptyFields(toyToEdit)
+        const mergedToy = {...randomToy, ...cleanedToy}
+        
+        console.log('Merged Toy: ', mergedToy)
+        
+        saveToy(mergedToy)
             .then(() => {
                 showSuccessMsg('Toy Saved!')
                 navigate('/toy')

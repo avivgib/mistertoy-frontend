@@ -46,19 +46,6 @@ export function ToyIndex() {
             })
     }
 
-    function onAddToy() {
-        const toyToSave = toyService.getRandomToy()
-        console.log(toyToSave)
-
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                showSuccessMsg(`Toy added (id: ${savedToy._id})`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot add toy')
-            })
-    }
-
     function onEditToy(toy) {
         const price = +prompt('New price?')
         const toyToSave = { ...toy, price }
@@ -89,7 +76,6 @@ export function ToyIndex() {
                     }
                     <hr />
                     <button> <Link to="/toy/edit">Add Toy</Link></button>
-                    <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
                 </section>
             </main>
         </div>
