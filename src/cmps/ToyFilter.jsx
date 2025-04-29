@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { utilService } from "../services/util.service.js"
+import { useEffectOnUpdate } from '../hooks/useEffectOnUpdate.js'
 
-const TOY_LABELS = ['Doll', 'Battery Powered', 'Educational', 'Puzzle', 'Outdoor']
+const TOY_LABELS = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
 const SORT_OPTIONS = [
     { value: 'name', label: 'Name' },
     { value: 'price', label: 'Price' },
@@ -11,10 +12,14 @@ const SORT_OPTIONS = [
 export function ToyFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    onSetFilter = useRef(utilService.debounce(onSetFilter, 300))
+    const debouncedSetFilter = useRef(utilService.debounce(onSetFilter, 1000))
+
+    // useEffectOnUpdate(() => {
+    //     debouncedSetFilter.current(filterByToEdit)
+    // }, [filterByToEdit])
 
     useEffect(() => {
-        onSetFilter.current(filterByToEdit)
+        debouncedSetFilter.current(filterByToEdit)
     }, [filterByToEdit])
 
     function handleChange({ target }) {
@@ -33,10 +38,20 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         })
     }
 
-    function handleLabelChange({ target }) {
-        const selected = Array.from(target.selectedOptions, option => option.value)
-        setFilterByToEdit(prev => ({ ...prev, labels: selected }))
+    function handleLabelCheckboxChange({ target }) {
+        const { value, checked } = target
+
+        setFilterByToEdit(prev => {
+            const labels = prev.labels || []
+            let newLabels
+
+            checked ? newLabels = [...labels, value]
+                    : newLabels = labels.filter(label => label !== value)
+
+            return { ...prev, labels: newLabels }
+        })
     }
+
 
     return (
         <section className="toy-filter full main-layout">
@@ -50,30 +65,32 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         <input
                             type="text"
                             id="name"
-                            name="txt"
+                            name="name"
                             className="filter-input"
-                            placeholder="By name"
-                            value={filterByToEdit.txt || ''}
+                            placeholder="Toy Name"
+                            value={filterByToEdit.name || ''}
                             onChange={handleChange}
                         />
                     </div>
 
                     {/* Multiselect for labels */}
                     <div className="filter-group">
-                        <label htmlFor="labels" className="filter-label">Labels:</label>
-                        <select
-                            id="labels"
-                            name="labels"
-                            className="filter-select"
-                            multiple
-                            value={filterByToEdit.labels || []}
-                            onChange={handleLabelChange}
-                        >
+                        <label className="filter-label">Labels:</label>
+                        <div className="checkbox-list">
                             {TOY_LABELS.map(label => (
-                                <option key={label} value={label}>{label}</option>
+                                <label key={label} className="checkbox-item">
+                                    <input
+                                        type="checkbox"
+                                        value={label}
+                                        checked={filterByToEdit.labels?.includes(label)}
+                                        onChange={handleLabelCheckboxChange}
+                                    />
+                                    {label}
+                                </label>
                             ))}
-                        </select>
+                        </div>
                     </div>
+
 
                     {/* Sort dropdown */}
                     <div className="filter-group">
@@ -85,7 +102,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                             value={filterByToEdit.sortBy || ''}
                             onChange={handleChange}
                         >
-                            <option value="">-- Select --</option>
+                            <option value="">-- Sort By --</option>
                             {SORT_OPTIONS.map(opt => (
                                 <option key={opt.value} value={opt.value}>
                                     {opt.label}
