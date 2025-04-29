@@ -1,0 +1,54 @@
+.toy-preview {
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    transition: box-shadow 0.3s;
+}
+
+.toy-preview:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toy-preview img {
+    max-width: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.toy-preview h4 {
+    text-transform: capitalize;
+    color: var(--text-color);
+    margin: 0.5em 0 0.2em;
+}
+
+.toy-preview .price {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.toy-preview .owner {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.toy-preview .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.toy-preview .actions a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.toy-preview .actions a:hover {
+    text-decoration: underline;
+}

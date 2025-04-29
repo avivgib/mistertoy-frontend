@@ -1,0 +1,38 @@
+.home-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.home-page .content {
+    max-width: 400px;
+}
+
+.home-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.home-page p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.home-page button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.home-page img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}

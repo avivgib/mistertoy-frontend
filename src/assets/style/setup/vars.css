@@ -1,0 +1,62 @@
+/* Base Theme Variables */
+:root {
+  --clr1: #0a9396;
+  --clr2: brown;
+
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --accent-color: #087f81;
+  --card-bg: #f0f0f0;
+  --hover-shadow: 0 0 2em #087f81aa;
+  --focus-bg: #d4f5f6;
+}
+
+/* Dark Theme */
+.theme-dark {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --accent-color: #61dafb;
+  --card-bg: #1e1e1e;
+  --hover-shadow: 0 0 2em #61dafbaa;
+  --focus-bg: #263238;
+}
+
+/* Cheerful Theme */
+.theme-cheerful {
+  --bg-color: #fff5e6;
+  --text-color: #402100;
+  --accent-color: #ff9900;
+  --card-bg: #fff0cc;
+  --hover-shadow: 0 0 2em #ff9900aa;
+  --focus-bg: #ffe0b3;
+}
+
+/* Pastel Theme */
+.theme-pastel {
+  --bg-color: #ffe4ec;
+  --text-color: #40394a;
+  --accent-color: #b388eb;
+  --card-bg: #f8f0fb;
+  --hover-shadow: 0 0 2em #b388ebaa;
+  --focus-bg: #f3dcfa;
+}
+
+/* Neon Theme */
+.theme-neon {
+  --bg-color: #1b003b;
+  --text-color: #00ffea;
+  --accent-color: #ff00ff;
+  --card-bg: #2e0057;
+  --hover-shadow: 0 0 2em #ff00ffaa;
+  --focus-bg: #3c006e;
+}
+
+/* Natural Theme */
+.theme-natural {
+  --bg-color: #edf6f9;
+  --text-color: #264653;
+  --accent-color: #2a9d8f;
+  --card-bg: #dff3f1;
+  --hover-shadow: 0 0 2em #2a9d8faa;
+  --focus-bg: #c3ebe7;
+}
