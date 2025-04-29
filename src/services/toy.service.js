@@ -69,5 +69,5 @@ function getRandomToy() {
 }
 
 function getDefaultFilter() {
-    return { name: '', maxPrice: '', createdAt: '' }
+    return { name: '', labels: [], inStock: undefined, sortBy: '' }
 }

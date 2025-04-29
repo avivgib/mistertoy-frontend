@@ -25,14 +25,18 @@ export function ToyIndex() {
     //     console.log(`status: ${isOnline ? 'online' : 'offline'}`)
     // }, [isOnline])
 
-    useEffectOnUpdate(() => {
+    useEffect(() => {
+        console.log('USE EFFECT INDEX');
+        
         loadToys()
-            .catch(err => {
-                showErrorMsg('Cannot load toys!')
-            })
     }, [filterBy])
+    
+    // useEffectOnUpdate(() => {
+    //     loadToys()
+    // }, [filterBy])
 
     function onSetFilter(filterBy) {
+        console.log('on set filter');
         setFilterBy(filterBy)
     }
 
@@ -43,19 +47,6 @@ export function ToyIndex() {
             })
             .catch(err => {
                 showErrorMsg('Cannot remove toy')
-            })
-    }
-
-    function onEditToy(toy) {
-        const price = +prompt('New price?')
-        const toyToSave = { ...toy, price }
-
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot update toy')
             })
     }
 
@@ -75,7 +66,9 @@ export function ToyIndex() {
                         : <div>Loading...</div>
                     }
                     <hr />
-                    <button> <Link to="/toy/edit">Add Toy</Link></button>
+                    <Link to="/toy/edit">
+                        <button>Add Toy</button>
+                    </Link>
                 </section>
             </main>
         </div>
