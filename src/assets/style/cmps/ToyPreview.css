@@ -20,11 +20,11 @@
 }
 
 .toy-preview img {
-    width: 160px;
-    height: 160px;
+    /* width: auto; */
+    height: auto;
     border-radius: 16px;
-    object-fit: cover;
-    border: 3px solid var(--accent-color);
+    /* object-fit: cover; */
+    /* border: 3px solid var(--accent-color); */
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
 }
 
