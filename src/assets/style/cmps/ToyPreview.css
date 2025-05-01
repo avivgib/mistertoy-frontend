@@ -12,12 +12,22 @@
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     width: 240px;
     color: var(--text-color);
+    flex-grow: 1;
 }
 
 .toy-preview:hover {
     transform: translateY(-6px);
     box-shadow: var(--hover-shadow);
 }
+
+/* ✨ inline cover flex */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
 
 .toy-preview img {
     /* width: auto; */

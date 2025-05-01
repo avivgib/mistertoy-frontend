@@ -3,7 +3,7 @@ import defaultToyImg from '../assets/img/dog-doll.jpg'
 import img from '../assets/img/toys/camera.jpg'
 
 export function ToyPreview({ toy }) {
-
+    // console.log('toy', toy)
     function getImgSrc(toyName) {
         const BASE_URL = process.env.NODE_ENV === 'production'
             ? 'public/'
@@ -12,26 +12,30 @@ export function ToyPreview({ toy }) {
     }
 
     const imgUrl = getImgSrc(toy.imgUrl)
-    console.log('toy.imgUrl', toy.imgUrl)
-    
+    // console.log('toy.imgUrl', toy.imgUrl)
+
     return (
         <article>
-            <img src={imgUrl} alt={`Toy: ${toy.name}`} />
+            <div className="card-content">
+                    <img src={imgUrl} alt={`Toy: ${toy.name}`} />
 
-            <h4>{toy.name}</h4>
-            
-            <p className="price">${toy.price.toLocaleString()}</p>
+                    <h4>{toy.name}</h4>
 
-            {toy.owner && (
-                <p className="owner">
-                    Owner: <Link to={`/user/${toy.owner._id}`}>{toy.owner.fullname}</Link>
-                </p>
-            )}
+                    <p className="price">${toy.price.toLocaleString()}</p>
+                    <p className="date">
+                        {new Date(toy.createdAt).toLocaleDateString('he-IL')}
+                    </p>
+                    {toy.owner && (
+                        <p className="owner">
+                            Owner: <Link to={`/user/${toy.owner._id}`}>{toy.owner.fullname}</Link>
+                        </p>
+                    )}
 
-            <nav className="actions">
-                <Link to={`/toy/edit/${toy._id}`}>Edit</Link>
-                <Link to={`/toy/${toy._id}`}>Details</Link>
-            </nav>
+                <nav className="actions">
+                    <Link to={`/toy/edit/${toy._id}`}>Edit</Link>
+                    <Link to={`/toy/${toy._id}`}>Details</Link>
+                </nav>
+            </div>
         </article>
     )
 }
