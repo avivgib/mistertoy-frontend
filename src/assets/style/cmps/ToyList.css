@@ -2,15 +2,50 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    padding-left: 0;
-    gap: 0.6em;
-    margin-block: 0.6em;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 2rem auto;
+    max-width: 1200px;
 }
 
 .toy-list li {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: var(--bg-color);
+    background-color: var(--card-bg);
     padding: 0.65em;
+    border-radius: 1rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.toy-list li:hover {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-4px);
+}
+
+.remove-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border: none;
+    color: rgb(49, 48, 48);
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+
+.remove-btn:hover {
+    transform: scale(1.1);
 }
