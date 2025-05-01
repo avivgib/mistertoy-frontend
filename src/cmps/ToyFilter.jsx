@@ -28,14 +28,12 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-    function handleStockChange() {
-        setFilterByToEdit(prev => {
-            const nextStockVal =
-                prev.inStock === undefined ? true :
-                    prev.inStock === true ? false :
-                        undefined
-            return { ...prev, inStock: nextStockVal }
-        })
+    function handleStockChange({ target }) {
+        const value = target.value
+        setFilterByToEdit(prev => ({
+            ...prev,
+            inStock: value === 'all' ? undefined : value === 'true'
+        }))
     }
 
     function handleLabelCheckboxChange({ target }) {
@@ -46,12 +44,11 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             let newLabels
 
             checked ? newLabels = [...labels, value]
-                    : newLabels = labels.filter(label => label !== value)
+                : newLabels = labels.filter(label => label !== value)
 
             return { ...prev, labels: newLabels }
         })
     }
-
 
     return (
         <section className="toy-filter full main-layout">
@@ -115,17 +112,39 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 <div className="filter-row stock-row">
                     {/* In stock: toggle between true / false / undefined */}
                     <div className="filter-group">
-                        <button
-                            type="button"
-                            className='stock-toggle'
-                            onClick={handleStockChange}
-                        >
-                            {filterByToEdit.inStock === undefined
-                                ? 'All'
-                                : filterByToEdit.inStock
-                                    ? 'In Stock'
-                                    : 'Out of Stock'}
-                        </button>
+                        <label className="filter-label">Stock Status:</label>
+                        <div className="radio-list">
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="stock"
+                                    value="all"
+                                    checked={filterByToEdit.inStock === undefined}
+                                    onChange={handleStockChange}
+                                />
+                                All
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="stock"
+                                    value="true"
+                                    checked={filterByToEdit.inStock === true}
+                                    onChange={handleStockChange}
+                                />
+                                In Stock
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="stock"
+                                    value="false"
+                                    checked={filterByToEdit.inStock === false}
+                                    onChange={handleStockChange}
+                                />
+                                Out of Stock
+                            </label>
+                        </div>
                     </div>
                 </div>
             </form>
