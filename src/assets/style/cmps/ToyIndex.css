@@ -15,8 +15,18 @@
 
 .content-grid {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
     align-items: start;
+}
+
+.toy-list-wrapper {
+    overflow: auto;
+}
+
+.add-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .add-btn {

@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { toyService } from '../services/toy.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { loadToys, removeToyOptimistic, saveToy, setFilterBy } from '../store/actions/toy.actions.js'
 
@@ -60,17 +59,22 @@ export function ToyIndex() {
 
                 <section className='main-content'>
                     <div className="content-grid">
-                        {!isLoading
-                            ? <ToyList
-                                toys={toys}
-                                onRemoveToy={onRemoveToy}
-                            />
-                            : <div>Loading...</div>
-                        }
+                        <div className="toy-list-wrapper">
+                            {!isLoading
+                                ? <ToyList
+                                    toys={toys}
+                                    onRemoveToy={onRemoveToy}
+                                />
+                                : <div>Loading...</div>
+                            }
+                        </div>
 
-                        <Link to="/toy/edit">
-                            <button className='add-btn' >➕</button>
-                        </Link>
+
+                        <div className="add-btn-wrapper">
+                            <Link to="/toy/edit">
+                                <button className='add-btn' >➕</button>
+                            </Link>
+                        </div>
                     </div>
                 </section>
             </main>
