@@ -27,10 +27,10 @@ export function ToyIndex() {
 
     useEffect(() => {
         console.log('USE EFFECT INDEX');
-        
+
         loadToys()
     }, [filterBy])
-    
+
     // useEffectOnUpdate(() => {
     //     loadToys()
     // }, [filterBy])
@@ -52,6 +52,10 @@ export function ToyIndex() {
 
     return (
         <div>
+            <hr />
+            <Link to="/toy/edit">
+                <button className='add-btn' >➕</button>
+            </Link>
             <main className='toy-index'>
                 <aside className='sidebar'>
                     <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
@@ -65,10 +69,6 @@ export function ToyIndex() {
                         />
                         : <div>Loading...</div>
                     }
-                    <hr />
-                    <Link to="/toy/edit">
-                        <button>Add Toy</button>
-                    </Link>
                 </section>
             </main>
         </div>
