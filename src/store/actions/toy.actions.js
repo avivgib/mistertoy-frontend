@@ -7,6 +7,8 @@ export function loadToys() {
     const filterBy = store.getState().toyModule.filterBy
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
 
+    // console.log('ACTION LOAD TOYS:', filterBy)
+    
     return toyService.query(filterBy)
         .then(toys => {
             store.dispatch({ type: SET_TOYS, toys })
@@ -48,11 +50,11 @@ export function removeToyOptimistic(toyId) {
 export function saveToy(toy) {
     const type = toy._id ? UPDATE_TOY : ADD_TOY
     console.log('type:', type)
-    console.log('toy:' ,toy)
+    console.log('toy:', toy)
 
     return toyService.save(toy)
         .then(savedToy => {
-            console.log('savedToy:' ,savedToy)
+            console.log('savedToy:', savedToy)
             store.dispatch({ type, toy: savedToy })
             return savedToy
         })
@@ -63,5 +65,5 @@ export function saveToy(toy) {
 }
 
 export function setFilterBy(filterBy) {
-    store.dispatch({ type: SET_FILTER_BY, filterBy })
+       store.dispatch({ type: SET_FILTER_BY, filterBy })
 }

@@ -18,13 +18,13 @@ const initialState = {
 }
 
 export function toyReducer(state = initialState, cmd = {}) {
+    // console.log('<><>', cmd)
+
     switch (cmd.type) {
         case SET_TOYS:
             return { ...state, toys: cmd.toys }
 
-        case ADD_TOY:
-            console.log('REDUCER:', cmd);
-            
+        case ADD_TOY:         
             return {
                 ...state,
                 toys: [...state.toys, cmd.toy]
@@ -57,6 +57,8 @@ export function toyReducer(state = initialState, cmd = {}) {
             }
 
         case SET_FILTER_BY:
+            // console.log('CMD:', cmd)
+            
             return {
                 ...state,
                 filterBy: {...state.filterBy, ...cmd.filterBy}
