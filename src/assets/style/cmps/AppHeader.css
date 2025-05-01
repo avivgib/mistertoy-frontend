@@ -1,8 +1,9 @@
-/* Header */
+/* ========== Header ========== */
 .app-header {
     background-color: var(--bg-color);
-    color: var(text-color);
+    color: var(--text-color);
     padding-block: 1em;
+    padding-inline: 50px;
     top: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -13,17 +14,16 @@
     background-color: var(--bg-color);
 }
 
-/* Container */
+
+/* ========== Header Container ========== */
 .header-container {
-    max-width: 1280px;
-    /* margin: 0 auto; */
-    padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Logo */
+
+/* ========== Logo ========== */
 .logo {
     font-size: 1.5rem;
     font-weight: 200;
@@ -48,28 +48,50 @@
     height: 4rem;
 }
 
-/* Navigation */
+
+/* ========== Navigation ========== */
 .app-nav {
     display: flex;
-    gap: 15px;
+    gap: 1.75rem;
     align-items: center;
 }
 
 .nav-link {
-    color: var(--text-color);
+    position: relative;
+    font-weight: 500;
     font-size: 1.125rem;
+    padding: 0.25rem 0;
+    color: var(--text-color);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--hover-shadow);
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover {
     color: var(--hover-shadow);
 }
 
+.nav-link:hover::after {
+    width: 100%;
+}
+
 .nav-link-active {
     color: var(--hover-shadow);
     font-weight: 600;
-    border-bottom: 2px solid var(--text-color);
+}
+
+.nav-link-active::after {
+    width: 100%;
 }
 
 [data-theme="dark"] .nav-link:hover,
@@ -77,21 +99,8 @@
     color: var(--hover-shadow);
 }
 
-/* Mobile Menu Toggle */
-.mobile-menu-toggle {
-    display: none;
-    color: var(--bg-color);
-    background: none;
-    border: none;
-    cursor: pointer;
-}
 
-.mobile-menu-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-/* User Section */
+/* ========== User Section ========== */
 .user-section {
     display: flex;
     align-items: center;
@@ -135,6 +144,8 @@
     color: #86efac;
 }
 
+
+/* ========== Logout Button ========== */
 .logout-button {
     background-color: #ef4444;
     color: white;
@@ -155,7 +166,23 @@
     cursor: not-allowed;
 }
 
-/* Mobile Navigation */
+
+/* ========== Mobile Menu Toggle ========== */
+.mobile-menu-toggle {
+    display: none;
+    color: var(--bg-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-menu-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+/* ========== Mobile Navigation ========== */
 .mobile-nav {
     display: none;
     background-color: var(--clr1);
@@ -180,7 +207,8 @@
     gap: 1rem;
 }
 
-/* Responsive Design */
+
+/* ========== Responsive Design ========== */
 @media (max-width: 768px) {
     .app-nav {
         display: none;
