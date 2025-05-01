@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom"
 import defaultToyImg from '../assets/img/dog-doll.jpg'
+import img from '../assets/img/toys/camera.jpg'
 
 export function ToyPreview({ toy }) {
+
+    function getImgSrc(toyName) {
+        const BASE_URL = process.env.NODE_ENV === 'production'
+            ? 'public/'
+            : 'src/assets/img/toys/'
+        return BASE_URL + toyName
+    }
+
+    const imgUrl = getImgSrc(toy.imgUrl)
+    console.log('toy.imgUrl', toy.imgUrl)
+    
     return (
-        <article className="toy-preview">
-            <img src={defaultToyImg} alt={`Toy: ${toy.name}`} />
+        <article>
+            <img src={imgUrl} alt={`Toy: ${toy.name}`} />
 
             <h4>{toy.name}</h4>
             
