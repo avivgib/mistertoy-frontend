@@ -20,10 +20,6 @@
     align-items: start;
 }
 
-.toy-list-wrapper {
-    overflow: auto;
-}
-
 .add-btn-wrapper {
     display: flex;
     justify-content: flex-end;
