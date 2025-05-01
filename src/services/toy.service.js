@@ -18,7 +18,7 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
-    console.log('filterBy', filterBy)
+    // console.log('filterBy', filterBy)
     return httpService.get(BASE_URL, filterBy)
     // return toyServiceLocal.query(filterBy)
 }

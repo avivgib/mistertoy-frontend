@@ -28,6 +28,10 @@ export function ToyIndex() {
         console.log('USE EFFECT INDEX');
 
         loadToys()
+            .catch(err => {
+                console.error('Cannot load toys', err)
+                showErrorMsg('Cannot load toys')
+            })
     }, [filterBy])
 
     // useEffectOnUpdate(() => {
