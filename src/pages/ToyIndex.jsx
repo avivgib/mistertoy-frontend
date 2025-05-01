@@ -59,16 +59,19 @@ export function ToyIndex() {
                 </aside>
 
                 <section className='main-content'>
-                    <Link to="/toy/edit">
-                        <button className='add-btn' >➕</button>
-                    </Link>
-                    {!isLoading
-                        ? <ToyList
-                            toys={toys}
-                            onRemoveToy={onRemoveToy}
-                        />
-                        : <div>Loading...</div>
-                    }
+                    <div className="content-grid">
+                        {!isLoading
+                            ? <ToyList
+                                toys={toys}
+                                onRemoveToy={onRemoveToy}
+                            />
+                            : <div>Loading...</div>
+                        }
+
+                        <Link to="/toy/edit">
+                            <button className='add-btn' >➕</button>
+                        </Link>
+                    </div>
                 </section>
             </main>
         </div>
