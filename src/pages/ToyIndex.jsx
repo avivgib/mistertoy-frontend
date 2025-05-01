@@ -53,15 +53,15 @@ export function ToyIndex() {
     return (
         <div>
             <hr />
-            <Link to="/toy/edit">
-                <button className='add-btn' >➕</button>
-            </Link>
             <main className='toy-index'>
                 <aside className='sidebar'>
                     <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 </aside>
 
                 <section className='main-content'>
+                    <Link to="/toy/edit">
+                        <button className='add-btn' >➕</button>
+                    </Link>
                     {!isLoading
                         ? <ToyList
                             toys={toys}
