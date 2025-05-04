@@ -20,6 +20,7 @@ export function ThemeSwitcher({ setActiveTheme }) {
     }
 
     setActiveTheme(theme)
+    localStorage.setItem("preferred-theme", theme)
 
     Object.values(buttonsRef.current).forEach((btn) =>
       btn.classList.remove("active-theme")

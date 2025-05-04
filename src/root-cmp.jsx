@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router } from 'react-router'
 // const Router = ReactRouterDOM.HashRouter
 import { Route, Routes } from 'react-router-dom'
@@ -16,8 +17,23 @@ import { ToyDetails } from './pages/ToyDetails.jsx'
 import { UserDetails } from './pages/UserDetails.jsx'
 import { LoginSignup } from './cmps/LoginSignup.jsx'
 
+const themes = [
+    "theme-light",
+    "theme-dark",
+    "theme-cheerful",
+    "theme-pastel",
+    // "theme-neon",
+    "theme-natural"
+  ]
 
 export function App() {
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("preferred-theme") || "theme-light"
+        document.documentElement.classList.remove(...themes)
+        if (savedTheme !== "theme-light") {
+          document.documentElement.classList.add(savedTheme)
+        }
+      }, [])
 
     return (
         <Provider store={store}>
