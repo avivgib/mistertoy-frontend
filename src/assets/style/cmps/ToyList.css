@@ -21,6 +21,7 @@
     width: 30px;
     height: 30px;
     border: none;
+    background: none;
     color: rgb(49, 48, 48);
     border-radius: 50%;
     cursor: pointer;

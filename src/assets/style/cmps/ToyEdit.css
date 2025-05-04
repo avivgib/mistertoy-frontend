@@ -1,7 +1,7 @@
 /* ToyEdit.css */
 
 .toy-edit {
-    max-width: 600px;
+    max-width: 400px;
     margin: 3rem auto;
     background-color: var(--bg-color);
     padding: 2rem;
