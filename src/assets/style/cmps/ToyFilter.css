@@ -28,14 +28,17 @@
 }
 
 .filter-label {
-    font-size: 0.9rem;
     font-weight: 400;
-    color: #555;
+    color: #9c9a9a;
 }
 
 .checkbox-list {
     display: flex;
     flex-direction: column;
+}
+
+.checkbox-item {
+    color: var(--text-color);
 }
 
 .filter-input,
@@ -73,4 +76,5 @@
 .radio-list {
     display: flex;
     flex-direction: column;
+    color: var(--text-color);
 }
