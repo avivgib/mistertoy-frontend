@@ -25,8 +25,6 @@ export function ToyIndex() {
     // }, [isOnline])
 
     useEffect(() => {
-        console.log('USE EFFECT INDEX');
-
         loadToys()
             .catch(err => {
                 console.error('Cannot load toys', err)

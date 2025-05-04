@@ -17,6 +17,7 @@
 @import 'cmps/UserMsg.css';
 @import 'cmps/LoginForm.css';
 @import 'cmps/ToyEdit.css';
+@import 'cmps/ThemeSwitcher.css';
 
 @import 'cmps/ToyFilter.css';
 @import 'cmps/ToyList.css';

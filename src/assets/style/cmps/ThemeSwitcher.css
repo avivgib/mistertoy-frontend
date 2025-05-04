@@ -1,0 +1,76 @@
+.theme-switcher {
+    padding: 1.5rem;
+    background-color: var(--bg-color);
+    border-radius: 0.75rem;
+    max-width: 600px;
+    color: var(--text-color);
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.05);
+  }
+  
+  .theme-switcher h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+  
+  .theme-switcher .theme-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .theme-switcher .theme-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+  }
+  
+  .theme-switcher .theme-btn:hover {
+    background-color: var(--focus-bg);
+    color: var(--text-color);
+    box-shadow: var(--hover-shadow);
+  }
+  
+  .theme-switcher .theme-btn:active {
+    transform: scale(0.96);
+  }
+  
+  .theme-switcher hr {
+    border: none;
+    border-top: 2px solid var(--accent-color);
+    margin: 1rem 0;
+  }
+  
+  .theme-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid transparent;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+  }
+  
+  .theme-btn:hover {
+    background-color: var(--focus-bg);
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-1px);
+  }
+  
+  .theme-btn.active-theme {
+    border-color: var(--accent-color);
+    background-color: var(--focus-bg);
+    font-weight: bold;
+  }
+  
