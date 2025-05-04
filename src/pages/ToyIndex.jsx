@@ -53,7 +53,6 @@ export function ToyIndex() {
 
     return (
         <div>
-            <hr />
             <main className='toy-index'>
                 <aside className='sidebar'>
                     <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
