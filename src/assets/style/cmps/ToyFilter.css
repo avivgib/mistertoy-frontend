@@ -1,11 +1,9 @@
 .toy-filter {
     background-color: var(--bg-color);
     padding: 1rem;
-    margin: 1rem;
-    border-radius: 6px;
-    height: calc(100vh - 2rem);
+    border-radius: 15px;
+    max-height: 100%;
     overflow-y: auto;
-    margin-inline-start: 0px;
 }
 
 .filter-title {
@@ -49,6 +47,7 @@
     font-size: 0.9rem;
     color: var(--text-color);
     background-color: var(--card-bg);
+    width: 12em;
 }
 
 .stock-toggle {
