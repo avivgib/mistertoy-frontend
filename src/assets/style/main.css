@@ -13,11 +13,11 @@
 @import 'cmps/HomePage.css';
 @import 'cmps/AppHeader.css';
 @import 'cmps/AboutUs.css';
-@import 'cmps/ToggleBtn.css';
 @import 'cmps/UserMsg.css';
 @import 'cmps/LoginForm.css';
 @import 'cmps/ToyEdit.css';
 @import 'cmps/ThemeSwitcher.css';
+@import 'cmps/ToyDetails.css';
 
 @import 'cmps/ToyFilter.css';
 @import 'cmps/ToyList.css';
