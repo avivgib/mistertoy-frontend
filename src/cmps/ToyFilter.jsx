@@ -55,7 +55,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             <h2 className="filter-title">Filters</h2>
             <form className="filter-form">
 
-                <div className="filter-row">
+                <div className="filter-row stock-row">
                     {/* Filter by name */}
                     <div className="filter-group">
                         <label htmlFor="name" className="filter-label">Name:</label>
@@ -109,14 +109,15 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     </div>
                 </div>
 
-                <div className="filter-row stock-row">
+                <div className="filter-row">
                     {/* In stock: toggle between true / false / undefined */}
                     <div className="filter-group">
                         <label className="filter-label">Stock Status:</label>
                         <div className="radio-list">
-                            <label>
+                            <label htmlFor="stock">
                                 <input
                                     type="radio"
+                                    id="stock"
                                     name="stock"
                                     value="all"
                                     checked={filterByToEdit.inStock === undefined}
@@ -124,20 +125,22 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                                 />
                                 All
                             </label>
-                            <label>
+                            <label htmlFor="inStock">
                                 <input
                                     type="radio"
-                                    name="stock"
+                                    id="inStock"
+                                    name="inStock"
                                     value="true"
                                     checked={filterByToEdit.inStock === true}
                                     onChange={handleStockChange}
                                 />
                                 In Stock
                             </label>
-                            <label>
+                            <label htmlFor="outOfStock">
                                 <input
                                     type="radio"
-                                    name="stock"
+                                    id="outOfStock"
+                                    name="outOfStock"
                                     value="false"
                                     checked={filterByToEdit.inStock === false}
                                     onChange={handleStockChange}
