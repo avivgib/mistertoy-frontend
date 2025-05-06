@@ -292,7 +292,7 @@
 }
 
 .btn-shop:hover {
-    background-color: #e73370;
+    background-color: var(--accent-color);
 }
 
 
