@@ -35,33 +35,33 @@ export function ToyEdit() {
 
     function getNonEmptyFields(obj) {
         const result = {}
-    
+
         for (const key in obj) {
             const val = obj[key]
-    
+
             const isEmpty =
                 val === '' ||
                 val === null ||
                 val === undefined ||
                 (Array.isArray(val) && val.length === 0)
-    
+
             if (!isEmpty) result[key] = val
         }
-    
+
         return result
-    }    
+    }
 
     function onSaveToy(ev) {
         ev.preventDefault()
 
         const randomToy = toyService.getRandomToy()
         console.log('Random Toy: ', randomToy)
-        
+
         const cleanedToy = getNonEmptyFields(toyToEdit)
-        const mergedToy = {...randomToy, ...cleanedToy}
-        
+        const mergedToy = { ...randomToy, ...cleanedToy }
+
         console.log('Merged Toy: ', mergedToy)
-        
+
         saveToy(mergedToy)
             .then(() => {
                 showSuccessMsg('Toy Saved!')
@@ -97,7 +97,7 @@ export function ToyEdit() {
 
                 <div>
                     <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
-                    <Link to="/toy">Cancel</Link>
+                    <button><Link to="/toy">Cancel</Link></button>
                 </div>
             </form>
         </section>
