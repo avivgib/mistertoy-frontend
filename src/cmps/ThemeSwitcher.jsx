@@ -30,7 +30,7 @@ export function ThemeSwitcher({ setActiveTheme }) {
 
   return (
     <div className="theme-switcher">
-      <h2>Choose a Theme 🎨</h2>
+      <h2>Themes 🎨</h2>
       <div className="theme-buttons">
         {themes.map((theme) => (
           <button
