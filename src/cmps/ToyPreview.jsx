@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { FaRegTrashCan } from "react-icons/fa6"
 import defaultToyImg from '../assets/img/dog-doll.jpg'
 import img from '../assets/img/toys/camera.jpg'
 
@@ -21,9 +22,10 @@ export function ToyPreview({ toy, onRemoveToy }) {
                     <button onClick={() => onRemoveToy(toy._id)}
                         className="remove-btn"
                         title="Remove toy"
-                    >🗑️</button>
+                    ><FaRegTrashCan className="icon-large" />
+                    </button>
                 </div>
-                
+
                 <img src={imgUrl} alt={`Toy: ${toy.name}`} />
 
                 <h4>{toy.name}</h4>
