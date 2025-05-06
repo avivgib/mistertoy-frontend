@@ -2,65 +2,91 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
     min-height: 90vh;
     background-color: var(--focus-bg);
 }
 
 .login-form {
     background: white;
-    padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+    padding: 2rem;
     width: 300px;
 }
 
 .login-form h2 {
-    margin-bottom: 1.5rem;
     text-align: center;
+    
+    margin-bottom: 1.5rem;
 }
 
-.form-group {
+.login-form .form-group {
     display: flex;
     flex-direction: column;
+    
     margin-bottom: 1rem;
 }
 
-.form-group label {
-    margin-bottom: 0.5rem;
+.login-form .form-group label {
     font-size: 0.9rem;
     color: #333;
+    
+    margin-bottom: 0.5rem;
 }
 
-.form-group input {
+.login-form .form-group input {
     padding: 0.5rem;
+
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-button {
+.login-form button {
     width: 100%;
+
     padding: 0.7rem;
-    background-color: var(--bg-color);
-    color: var(--text-color);
     border: none;
     border-radius: 4px;
+    
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    
     font-weight: bold;
     cursor: pointer;
+    
     transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
+.login-form button:hover {
     background-color: var(--bg-color);
 }
 
-button:disabled {
+.login-form button:disabled {
     background-color: #9e9e9e;
     cursor: not-allowed;
 }
 
-.error {
+.login-form .error {
     color: red;
     font-size: 0.85rem;
+    
     margin-bottom: 1rem;
     text-align: center;
+}
+
+.login-form .toggle-signup-signin {
+    margin-top: 1rem;
+}
+
+.login-form .toggle-signup-signin button {
+    background: none;
+    color: var(--link-color, #007bff);
+    border: none;
+
+    font-size: 0.9rem;
+    text-decoration: underline;
+
+    cursor: pointer;
 }

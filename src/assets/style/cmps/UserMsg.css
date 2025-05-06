@@ -1,12 +1,15 @@
+/* User Message Component Styles */
 .user-msg {
-    position: relative;
-    background-color: var(--bg-color);
-    padding: 1.5em 2.5em;
     position: fixed;
     bottom: 0;
     right: 1em;
-    color: var(--text-color);
+    
+    padding: 1.5em 2.5em;
     border-radius: 2px;
+
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    
     font-size: 1.1em;
 }
 
@@ -25,14 +28,14 @@
 
     height: 30px;
     width: 30px;
-
-    background-color: transparent;
-    color: inherit;
-    font-size: 1em;
-
+    
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    background-color: transparent;
+    color: inherit;
+    font-size: 1em;
 
     cursor: pointer;
 }

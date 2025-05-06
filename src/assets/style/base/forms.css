@@ -8,9 +8,10 @@ button {
 }
 
 button:hover {
-    background-color: var(--focus-bg);
-    color: var(--text-color);
+    /* background-color: var(--focus-bg); */
+    /* color: var(--text-color); */
     transition: .3s;
+    transform: scale(1.05);
 }
 
 input:focus {

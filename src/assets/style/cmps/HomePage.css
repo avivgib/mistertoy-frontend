@@ -1,80 +1,89 @@
+/* Home Page Component Styles */
+
 .home-page {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #333;
-  }
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #333;
+}
+
+.home-page .video-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.home-page .video-wrapper .bg-video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: top;
+}
+
+.home-page .video-wrapper .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.home-page .video-wrapper .hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.home-page .video-wrapper .hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home-page .video-wrapper .hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.home-page .video-wrapper .hero-content .btn-shop {
+  font-size: 1.2rem;
+  text-decoration: none;
+
+  padding: 0.75em 1.5em;
+  border-radius: 2rem;
   
-  .video-wrapper {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-  }
+  background-color: var(--bg-color);
+  color: var(--text-color);
   
-  .bg-video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;  
-    object-position: top;
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.6);
-  }
-  
-  .hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  
-  .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .btn-shop {
-    background-color: #ff4081;
-    color: white;
-    padding: 0.75em 1.5em;
-    border-radius: 2rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-shop:hover {
-    background-color: #e73370;
-  }
-  
-  .features {
-    padding: 2rem;
-    background-color: #fff8e1;
-    text-align: center;
-  }
-  
-  .features h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .features-list {
-    list-style: none;
-    padding: 0;
-    font-size: 1.2rem;
-  }
-  
-  .features-list li {
-    margin: 0.5rem 0;
-  }
-  
+  transition: background-color 0.3s ease;
+}
+
+.home-page .video-wrapper .hero-content .btn-shop:hover {
+  background-color: var(--accent-color);
+}
+
+.home-page .features {
+  text-align: center;
+
+  padding: 2rem;
+  background-color: #fff8e1;
+}
+
+.home-page .features h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.home-page .features .features-list {
+  list-style: none;
+  padding: 0;
+
+  font-size: 1.2rem;
+}
+
+.home-page .features-list li {
+  margin: 0.5rem 0;
+}
