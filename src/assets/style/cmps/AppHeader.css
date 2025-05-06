@@ -7,8 +7,7 @@
     background-color: var(--bg-color);
     color: var(--text-color);
     padding-block: 1em;
-    padding-inline: 50px;
-    top: 0;
+    padding-inline: 5rem;
     box-shadow: 0 3px 6px var(--text-color);
     transition: all 0.3s ease;
     z-index: 20;
@@ -60,19 +59,22 @@
 
 .nav-link {
     position: relative;
+    display: inline-block;
     font-weight: 500;
     font-size: 1.125rem;
-    padding: 0.25rem 0;
+    padding: 0.5rem 1rem;
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    transition: all 0.3s ease;
 }
 
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 4px;
+    left: 10%;
     width: 0%;
     height: 2px;
     background-color: var(--hover-shadow);
@@ -81,23 +83,32 @@
 
 .nav-link:hover {
     color: var(--hover-shadow);
+    background-color: var(--focus-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
 }
 
-.nav-link:hover::after,
-.nav-link-active::after {
-    width: 100%;
+.nav-link:hover::after {
+    width: 80%;
 }
 
 .nav-link-active {
     color: var(--hover-shadow);
     font-weight: 600;
+    background-color: var(--focus-bg);
+    border-radius: 0.5rem;
+}
+
+.nav-link-active::after {
+    width: 80%;
 }
 
 [data-theme="dark"] .nav-link:hover,
 [data-theme="dark"] .nav-link-active {
     color: var(--hover-shadow);
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
-
 
 /* ========== User Section ========== */
 .user-section {
@@ -271,8 +282,8 @@
 }
 
 .btn-shop {
-    background-color: #ff4081;
-    color: white;
+    background-color: var(--card-bg);
+    color: var(--text-color);
     padding: 0.75em 1.5em;
     border-radius: 2rem;
     font-size: 1.2rem;
@@ -288,7 +299,8 @@
 /* ========== Features Section ========== */
 .features {
     padding: 2rem;
-    background-color: #fff8e1;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     text-align: center;
 }
 
@@ -315,12 +327,15 @@
 
 .theme-switcher-popup {
     position: absolute;
+    min-width: 100px;
     top: 100%;
     right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 0.75em;
+    border: 1px solid var(--focus-bg);
     border-radius: 0.5em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     z-index: 10;
+}
+
+.theme-toggle-btn {
+    font-size: 1.2rem;
 }

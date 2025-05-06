@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-import { ThemeSwitcher } from './ThemeSwitcher.jsx'
 import { NavLink } from 'react-router-dom'
-import logo from '../assets/img/logo-mister-toy.png'
+
+import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi'
+import { ThemeSwitcher } from './ThemeSwitcher.jsx'
 import { UserMsg } from './UserMsg.jsx'
+
+import logo from '../assets/img/logo-mister-toy.png'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
