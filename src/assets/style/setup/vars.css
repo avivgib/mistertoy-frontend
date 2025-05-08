@@ -1,6 +1,6 @@
 /* Base Theme Variables */
 :root {
-  --clr1: #0a9396;
+  --clr1: rgb(5, 94, 2);
   --clr2: brown;
 
   --bg-color: #ffffff;

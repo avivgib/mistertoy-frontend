@@ -1,0 +1,47 @@
+// Positioning
+@mixin fixed-top-right($top: 0, $right: 1em) {
+    position: absolute;
+    top: $top;
+    right: $right;
+  }
+  
+  // Basic Button Reset
+  @mixin reset-button($size: 30px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    height: $size;
+    width: $size;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-color: transparent;
+    color: inherit;
+    font-size: 1em;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: var(--focus-bg);
+    }
+  }
+  
+  // Message Box
+  @mixin user-msg($bg-color, $color: var(--text-color)) {
+    @include fixed-top-right();
+    padding: 1.5em 2.5em;
+    border-radius: 2px;
+  
+    background-color: $bg-color;
+    color: $color;
+  
+    font-size: 1.1em;
+  }
+  
+  // Font Size Calc (responsive)
+  @function rem($px, $base: 16) {
+    @return #{$px / $base}rem;
+  }
+  
