@@ -1,7 +1,7 @@
 /* Setup */
 @use './setup/mixins' as *;
-@use './setup/vars.css';
-@use './setup/typography.css';
+@use './setup/vars';
+@use './setup/typography';
 
 /* Base */
 @use './base/_base';
