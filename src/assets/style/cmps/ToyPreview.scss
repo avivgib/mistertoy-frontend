@@ -1,0 +1,122 @@
+.toy-preview {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-grow: 1;
+
+    width: 16rem;
+    border-radius: 20px;
+    background: linear-gradient(1deg, var(--card-bg), #ffffff);
+    color: var(--text-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--hover-shadow);
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    img {
+        width: 100vw;
+        height: 35vh;
+        object-fit: fill;
+        border-radius: 16px 16px 0 0;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin: 0;
+    }
+
+    .price {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--accent-color);
+    }
+
+    .owner {
+        font-size: 0.9rem;
+        color: var(--clr2);
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-top: 0.6rem;
+        padding-block-end: 10px;
+
+        a {
+            padding: 0.4rem 0.8rem;
+            background-color: var(--focus-bg);
+            color: var(--text-color);
+
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+
+            font-weight: 600;
+            text-decoration: none;
+
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            &:hover {
+                background-color: var(--accent-color);
+                color: white;
+            }
+        }
+    }
+}
+
+// Separate button (not nested)
+.remove-btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--card-bg);
+    color: var(--text-color);
+
+    border: none;
+    border-radius: 50%;
+
+    font-weight: bold;
+    line-height: 1;
+
+    cursor: pointer;
+    z-index: 2;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+        background: var(--focus-bg);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .icon-large {
+        font-size: 1.2rem;
+        pointer-events: none;
+    }
+}

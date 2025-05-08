@@ -1,0 +1,29 @@
+.toy-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  
+    list-style: none;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 1400px;
+    width: 100%;
+  
+    .toy-preview {
+      position: relative;
+    }
+  
+    // Responsive Design
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+  
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0.5rem;
+    }
+  }
+  
