@@ -1,0 +1,42 @@
+/* Setup */
+@use './setup/mixins' as *;
+@use './setup/vars.css';
+@use './setup/typography.css';
+
+/* Base */
+@use './base/_base';
+@use 'base/_helpers';
+@use 'base/_layout';
+@use 'base/_forms';
+
+/* Components */
+@use 'cmps/UserMsg.scss';
+@use 'cmps/ToyIndex';
+@use 'cmps/HomePage';
+@use 'cmps/AppHeader';
+@use 'cmps/AboutUs';
+@use 'cmps/LoginForm';
+@use 'cmps/ToyEdit';
+@use 'cmps/ThemeSwitcher';
+@use 'cmps/ToyDetails';
+
+@use 'cmps/ToyFilter';
+@use 'cmps/ToyList';
+@use 'cmps/ToyPreview';
+
+/* @import 'cmps/ShoppingCart.css'; */
+
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app > * {
+    width: 100%;
+}
+
+main {
+    flex-grow: 1;
+}
