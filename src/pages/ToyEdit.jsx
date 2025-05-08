@@ -64,7 +64,7 @@ export function ToyEdit() {
 
         saveToy(mergedToy)
             .then(() => {
-                showSuccessMsg('Toy Saved!')
+                showSuccessMsg('Toy Saved')
                 navigate('/toy')
             })
             .catch(err => {
