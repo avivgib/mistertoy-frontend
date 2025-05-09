@@ -16,10 +16,12 @@
 
   &.success {
     background-color: var(--clr1);
+    color: white;
   }
-
+  
   &.error {
     background-color: var(--clr2);
+    color: white;
   }
 
   button {
