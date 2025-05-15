@@ -52,7 +52,7 @@
             transition: background-color 0.2s ease-in-out;
 
             &:hover {
-                background-color: var(--bg-color); // תוכל לשנות אם יש צבע hover שונה
+                background-color: var(--bg-color);
             }
 
             &:disabled {

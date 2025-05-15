@@ -25,6 +25,7 @@ export function ToyIndex() {
     // }, [isOnline])
 
     useEffect(() => {
+        console.log('TEST -> 111')
         loadToys()
             .catch(err => {
                 console.error('Cannot load toys', err)
@@ -37,7 +38,7 @@ export function ToyIndex() {
     // }, [filterBy])
 
     function onSetFilter(filterBy) {
-        console.log('on set filter');
+        console.log('on set filter')
         setFilterBy(filterBy)
     }
 

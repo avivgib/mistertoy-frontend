@@ -33,8 +33,7 @@ function ajax(endpoint, method = 'GET', data = null) {
 
     return axios(options)
         .then(res => res.data)
-        .catch(err => {
-            
+        .catch(err => {        
             console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: `, data)
             console.dir(err)
 

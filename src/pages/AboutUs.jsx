@@ -36,5 +36,5 @@ export function AboutUs() {
                 </div>
             </div>
         </section>
-    );
+    )
 }
