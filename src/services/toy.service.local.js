@@ -27,9 +27,9 @@ function query(filterBy = {}) {
             const regExp = new RegExp(filterBy.name, 'i')
             return toys.filter(toy =>
             {
-                console.log(toy.vendor, regExp.test(toy.vendor))
+                console.log(toy.name, regExp.test(toy.name))
                 console.log(toy.price, toy.price <= filterBy.maxPrice)
-                return regExp.test(toy.vendor) &&
+                return regExp.test(toy.name) &&
                 toy.price <= filterBy.maxPrice
             })
         })

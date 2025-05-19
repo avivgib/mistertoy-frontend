@@ -1,6 +1,8 @@
 import { httpService } from "./http.service.js"
 
 const BASE_URL = 'auth/'
+const USER_URL = 'user/'
+
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
 
 export const userService = {
@@ -14,12 +16,18 @@ export const userService = {
 }
 
 function login({ username, password }) {
+    if (!username || !password) {
+        return Promise.reject('Username and password are required')
+    }
 
     return httpService.post(BASE_URL + 'login', { username, password })
         .then(user => {
             console.log('user FETCH:', user)
-            if (user) return _setLoggedinUser(user)
-            else return Promise.reject('Invalid login')
+            if (user) {
+                _setLoggedinUser(user)
+                return user
+            } 
+            return Promise.reject('Invalid username or password')
         })
 }
 
@@ -27,7 +35,10 @@ function signup({ username, password, fullname }) {
     const user = { username, password, fullname, score: 10000 }
     return httpService.post(BASE_URL + 'signup', user)
         .then(user => {
-            if (user) return _setLoggedinUser(user)
+            if (user) {
+                _setLoggedinUser(user)
+                return user
+            }
             else return Promise.reject('Invalid signup')
         })
 }
@@ -37,11 +48,15 @@ function logout() {
         .then(() => {
             sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
         })
+        
 }
 
 function updateScore(diff) {
-    if (getLoggedinUser().score + diff < 0) return Promise.reject('No credit')
-    return httpService.put('user/', { diff })
+    const user = getLoggedinUser()
+    if (!user) return Promise.reject('User not logged in')
+    if (user.score + diff < 0) return Promise.reject('No credit')
+
+    return httpService.put(USER_URL, { diff })
         .then(user => {
             console.log('updateScore user:', user)
             _setLoggedinUser(user)
@@ -50,15 +65,16 @@ function updateScore(diff) {
 }
 
 function getById(userId) {
-    return httpService.get('user/' + userId)
+    return httpService.get(USER_URL + userId)
 }
 
 function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN))
+    const user = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN)
+    return user ? JSON.parse(user) : null
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname, score: user.score }
+    const userToSave = { _id: user._id, username: user.username, fullname: user.fullname, score: user.score }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     return userToSave
 }
