@@ -25,7 +25,6 @@ export function ToyIndex() {
     // }, [isOnline])
 
     useEffect(() => {
-        console.log('TEST -> 111')
         loadToys()
             .catch(err => {
                 console.error('Cannot load toys', err)
@@ -48,7 +47,7 @@ export function ToyIndex() {
                 showSuccessMsg('Toy removed')
             })
             .catch(err => {
-                showErrorMsg('Cannot remove toy')
+                showErrorMsg('Cannot remove toy', err)
             })
     }
 

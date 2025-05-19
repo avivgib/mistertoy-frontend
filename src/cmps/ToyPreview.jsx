@@ -16,7 +16,7 @@ export function ToyPreview({ toy, onRemoveToy }) {
     // console.log('toy.imgUrl', toy.imgUrl)
 
     return (
-        <article>
+        <article className="toy-preview">
             <div className="card-content">
                 <div>
                     <button onClick={() => onRemoveToy(toy._id)}

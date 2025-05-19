@@ -22,7 +22,7 @@
   .main-content {
     padding: 1.5rem;
     border-radius: 12px;
-    background: white;
+    // background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
     .content-grid {
@@ -56,7 +56,7 @@
 
         margin-inline-end: 20px;
 
-        background: var(--focus-bg);
+        background: var(--accent-color);
         color: var(--text-color);
 
         box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
@@ -120,6 +120,9 @@
     }
 
     .main-content {
+      background: center;
+      justify-items: center;     
+     
       .add-btn-wrapper {
         bottom: 1rem;
         right: 1rem;
