@@ -6,13 +6,15 @@ import { LoginForm } from './LoginForm.jsx'
 export function Signup() {
     const navigate = useNavigate()
 
-    function onSignup(credentials) {
-        signup(credentials)
-            .then(() => {
-                showSuccessMsg('Signed up successfully')
-                navigate('/welcome') // After signup
-            })
-            .catch(() => showErrorMsg('Oops, try again'))
+    async function onSignup(credentials) {
+        try {
+            await signup(credentials)
+            showSuccessMsg('Signed up successfully')
+            navigate('/toy')
+        } catch (err) {
+            showErrorMsg('Oops, try again', err)
+            throw err   
+        }
     }
 
     return <LoginForm onLogin={onSignup} isSignup={true} />

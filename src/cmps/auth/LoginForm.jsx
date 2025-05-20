@@ -1,11 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { userService } from '../../services/user.service.js'
 
-export function LoginForm({ onLogin }) {
+export function LoginForm({ onLogin, isSignup: isSignupProp = true }) {
     const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
-    const [isSignup, setIsSignup] = useState(true)  // Default to signup
+    const [isSignup, setIsSignup] = useState(isSignupProp)  // Default to signup
     const [isLoading, setIsLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
+
+    useEffect(() => {
+        setIsSignup(isSignupProp)
+    }, [isSignupProp])
 
     function handleChange(ev) {
         const { name, value } = ev.target
@@ -13,24 +17,25 @@ export function LoginForm({ onLogin }) {
         setErrorMsg('')
     }
 
-    async function handleSubmit(ev) {
-        ev.preventDefault()
-        setIsLoading(true)
-        
-        const authMethod = isSignup ? userService.signup(credentials) : userService.login(credentials)
+async function handleSubmit(ev) {
+    ev.preventDefault()
+    setIsLoading(true)
+    setErrorMsg(null)
 
-        authMethod
-            .then(user => {
-                if (onLogin) onLogin(user)
-            })
-            .catch(err => {
-                console.error('Authentication failed:', err)
-                setErrorMsg(typeof err === 'string' ? err : 'Authentication failed')
-            })
-            .finally(() => {
-                setIsLoading(false)
-            })
+    try {
+        const user = isSignup 
+            ? await userService.signup(credentials) 
+            : await userService.login(credentials)
+
+        if (onLogin) onLogin(user)
+    } catch (err) {
+        console.error('Authentication failed:', err)
+        setErrorMsg(typeof err === 'string' ? err : 'Authentication failed')
+    } finally {
+        setIsLoading(false)
     }
+}
+
 
     function toggleSignup() {
         setIsSignup(prevState => !prevState)
