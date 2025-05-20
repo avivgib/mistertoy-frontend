@@ -13,6 +13,8 @@ import { LoginSignup } from './cmps/auth/LoginSignup.jsx'
 import { AdminIndex } from './pages/AdminIndex.jsx'
 import { Login } from './cmps/auth/Login.jsx'
 import { Signup } from './cmps/auth/Signup.jsx'
+import { useTheme } from './hooks/useTheme.js'
+import { AuthGuard } from './cmps/auth/AuthGuard.jsx'
 
 import { store } from './store/store.js'
 import { userService } from './services/user.service.js'
@@ -26,11 +28,7 @@ const themes = [
 ]
 
 export function App() {
-    useEffect(() => {
-        const savedTheme = localStorage.getItem("preferred-theme") || "theme-light"
-        document.documentElement.classList.remove(...themes)
-        document.documentElement.classList.add(savedTheme)
-    }, [])
+    useTheme(themes)
 
     return (
         <Provider store={store}>
@@ -61,12 +59,4 @@ export function App() {
             </Router>
         </Provider>
     )
-}
-
-function AuthGuard({ children, checkAdmin = false }) {
-    // const user = userService.getLoggedinUser()
-    const user = useSelector(storeState => storeState.userModule.loggedInUser)
-    const isNotAllowed = !user || (checkAdmin && !user.isAdmin)
-    if (isNotAllowed) return <Navigate to="/" />
-    return children
 }
