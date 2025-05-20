@@ -57,8 +57,7 @@ export function toyReducer(state = initialState, cmd = {}) {
             }
 
         case SET_FILTER_BY:
-            // console.log('CMD:', cmd)
-            
+            // console.log('cmd.filterBy', cmd.filterBy)            
             return {
                 ...state,
                 filterBy: {...state.filterBy, ...cmd.filterBy}

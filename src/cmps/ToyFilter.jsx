@@ -35,17 +35,18 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             inStock: value === 'all' ? undefined : value === 'true'
         }))
     }
-
+    
+    // console.log('filterByToEdit', filterByToEdit.labels)
     function handleLabelCheckboxChange({ target }) {
         const { value, checked } = target
-
+        
         setFilterByToEdit(prev => {
             const labels = prev.labels || []
             let newLabels
-
+            
             checked ? newLabels = [...labels, value]
-                : newLabels = labels.filter(label => label !== value)
-
+            : newLabels = labels.filter(label => label !== value)
+            
             return { ...prev, labels: newLabels }
         })
     }
@@ -62,10 +63,10 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         <input
                             type="text"
                             id="name"
-                            name="name"
+                            name="txt"
                             className="filter-input"
                             placeholder="Toy Name"
-                            value={filterByToEdit.name || ''}
+                            value={filterByToEdit.txt || ''}
                             onChange={handleChange}
                         />
                     </div>

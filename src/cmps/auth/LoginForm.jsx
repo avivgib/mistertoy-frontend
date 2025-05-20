@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { userService } from '../../services/user.service.js'
+import { login, signup } from '../../store/actions/user.actions.js'
+import { useNavigate } from 'react-router-dom'
+
 
 export function LoginForm({ onLogin, isSignup: isSignupProp = true }) {
     const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
     const [isSignup, setIsSignup] = useState(isSignupProp)  // Default to signup
     const [isLoading, setIsLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
+    const navigate = useNavigate()
 
     useEffect(() => {
         setIsSignup(isSignupProp)
@@ -17,24 +21,26 @@ export function LoginForm({ onLogin, isSignup: isSignupProp = true }) {
         setErrorMsg('')
     }
 
-async function handleSubmit(ev) {
-    ev.preventDefault()
-    setIsLoading(true)
-    setErrorMsg(null)
+    async function handleSubmit(ev) {
+        ev.preventDefault()
+        setIsLoading(true)
+        setErrorMsg(null)
 
-    try {
-        const user = isSignup 
-            ? await userService.signup(credentials) 
-            : await userService.login(credentials)
+        try {
+            const user = isSignup
+                ? await signup(credentials)
+                : await login(credentials)
 
-        if (onLogin) onLogin(user)
-    } catch (err) {
-        console.error('Authentication failed:', err)
-        setErrorMsg(typeof err === 'string' ? err : 'Authentication failed')
-    } finally {
-        setIsLoading(false)
+                navigate('/toy')
+                console.log('login user:', user)
+            // if (onLogin) onLogin(user)
+        } catch (err) {
+            console.error('Authentication failed:', err)
+            setErrorMsg(typeof err === 'string' ? err : 'Authentication failed')
+        } finally {
+            setIsLoading(false)
+        }
     }
-}
 
 
     function toggleSignup() {

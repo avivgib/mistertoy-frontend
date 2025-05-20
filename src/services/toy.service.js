@@ -18,7 +18,6 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
-    // console.log('filterBy', filterBy)
     return httpService.get(BASE_URL, filterBy)
     // return toyServiceLocal.query(filterBy)
 }
@@ -70,5 +69,5 @@ function getRandomToy() {
 }
 
 function getDefaultFilter() {
-    return { name: '', labels: [], inStock: undefined, sortBy: '' }
+    return { txt: '', labels: [], inStock: undefined, sortBy: '' }
 }
