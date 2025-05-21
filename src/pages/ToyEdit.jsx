@@ -51,26 +51,39 @@ export function ToyEdit() {
         return result
     }
 
-    function onSaveToy(ev) {
+    async function onSaveToy(ev) {
         ev.preventDefault()
 
-        const randomToy = toyService.getRandomToy()
-        console.log('Random Toy: ', randomToy)
+        try {
+            const cleanedToy = getNonEmptyFields(toyToEdit)
+            console.log('Sending toy to save:', cleanedToy)
 
-        const cleanedToy = getNonEmptyFields(toyToEdit)
-        const mergedToy = { ...randomToy, ...cleanedToy }
+            await saveToy(cleanedToy)
+            showSuccessMsg('Toy Saved')
+            navigate('/toy')
+        } catch (err) {
+            console.log('Had issues in toy details', err)
+            showErrorMsg('Could not save toy')
+        }
 
-        console.log('Merged Toy: ', mergedToy)
 
-        saveToy(mergedToy)
-            .then(() => {
-                showSuccessMsg('Toy Saved')
-                navigate('/toy')
-            })
-            .catch(err => {
-                console.log('Had issues in toy details', err)
-                showErrorMsg('Had issues in toy details')
-            })
+        // const randomToy = toyService.getRandomToy()
+        // console.log('Random Toy: ', randomToy)
+
+        // const cleanedToy = getNonEmptyFields(toyToEdit)
+        // const mergedToy = { ...randomToy, ...cleanedToy }
+
+        // console.log('Merged Toy: ', mergedToy)
+
+        // saveToy(mergedToy)
+        //     .then(() => {
+        //         showSuccessMsg('Toy Saved')
+        //         navigate('/toy')
+        //     })
+        //     .catch(err => {
+        //         console.log('Had issues in toy details', err)
+        //         showErrorMsg('Had issues in toy details')
+        //     })
     }
 
     return (
@@ -96,8 +109,8 @@ export function ToyEdit() {
                 />
 
                 <div>
-                    <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
-                    <button><Link to="/toy">Cancel</Link></button>
+                    <button type="submit" >{toyToEdit._id ? 'Save' : 'Add'}</button>
+                    <button type="button" onClick={() => navigate('/toy')}>Cancel</button>
                 </div>
             </form>
         </section>
