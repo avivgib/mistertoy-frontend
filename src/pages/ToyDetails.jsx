@@ -29,9 +29,6 @@ export function ToyDetails() {
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
             <Link to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
             <Link to={`/toy`}>Back</Link>
-            <p>
-                <Link to="/toy/nJ5L4">Next Toy</Link>
-            </p>
         </section>
     )
 }
