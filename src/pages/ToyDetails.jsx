@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { toyService } from "../services/toy.service.js"
+// import { useSelector } from 'react-redux'
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
+    // const messages = useSelector(storeState => storeState.toyModule.toys)
+
     const [messages, setMessages] = useState([]) // collet from data of current toy ->store
     const [newMsg, setNewMsg] = useState('')
     const { toyId } = useParams()
@@ -16,7 +19,11 @@ export function ToyDetails() {
 
     function loadToy() {
         toyService.getById(toyId)
-            .then(toy => setToy(toy))
+            .then(toy => {
+                setToy(toy)
+                setMessages(toy.msgs || [])
+            })
+
             .catch(err => {
                 console.log('Had issues in toy details', err)
                 navigate('/toy')
