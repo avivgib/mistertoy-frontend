@@ -1,6 +1,15 @@
 import { toyService } from "../../services/toy.service.js"
 import { showSuccessMsg } from "../../services/event-bus.service.js"
-import { SET_TOYS, ADD_TOY, REMOVE_TOY, UPDATE_TOY, TOY_UNDO, SET_FILTER_BY, SET_IS_LOADING } from "../reducers/toy.reducer.js"
+import { 
+        SET_TOYS, 
+        ADD_TOY, 
+        REMOVE_TOY, 
+        UPDATE_TOY, 
+        TOY_UNDO, 
+        SET_FILTER_BY, 
+        SET_IS_LOADING, 
+        ADD_MSG_TO_TOY 
+    } from "../reducers/toy.reducer.js"
 import { store } from "../store.js"
 
 export function loadToys() {
@@ -64,4 +73,36 @@ export function saveToy(toy) {
 
 export function setFilterBy(filterBy = toyService.getDefaultFilter()) {
     store.dispatch({ type: SET_FILTER_BY, filterBy })
+}
+
+export async function loadToyById(toyId) {
+    try {
+        const toy = await toyService.getById(toyId)
+        store.dispatch({ type: UPDATE_TOY, toy})
+        return toy
+    } catch (err) {
+        console.log('toy action -> Cannot load toy by id', err)
+        throw err
+    }
+}
+
+export async function addMsgToToy(toyId, msg) {
+    const state = store.getState()
+    const toy = state.toyModule.toys.find(t => t._id === toyId)
+
+    if (!toy) throw new Error('Toy not found')
+
+    const updatedToy = {
+        ...toy,
+        msgs: [...(toy.msgs || []), msg]
+    }
+
+    try {
+        const savedToy = await toyService.save(updatedToy)
+        store.dispatch({ type: ADD_MSG_TO_TOY, toyId, msg })
+        return savedToy
+    } catch(err) {
+        console.log('toy action -> Cannot add message to toy', err)
+        throw err
+    }
 }

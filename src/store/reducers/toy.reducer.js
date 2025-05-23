@@ -9,6 +9,8 @@ export const TOY_UNDO = 'TOY_UNDO'
 export const SET_FILTER_BY = 'SET_FILTER_BY'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 
+export const ADD_MSG_TO_TOY = 'ADD_MSG_TO_TOY'
+
 
 const initialState = {
     toys: [],
@@ -24,7 +26,7 @@ export function toyReducer(state = initialState, cmd = {}) {
         case SET_TOYS:
             return { ...state, toys: cmd.toys }
 
-        case ADD_TOY:         
+        case ADD_TOY:
             return {
                 ...state,
                 toys: [...state.toys, cmd.toy]
@@ -57,11 +59,24 @@ export function toyReducer(state = initialState, cmd = {}) {
             }
 
         case SET_FILTER_BY:
-            // console.log('cmd.filterBy', cmd.filterBy)            
             return {
                 ...state,
-                filterBy: {...state.filterBy, ...cmd.filterBy}
+                filterBy: { ...state.filterBy, ...cmd.filterBy }
             }
+
+        // Add message to toy
+        case ADD_MSG_TO_TOY: {
+            const { toyId, msg } = cmd
+            return {
+                ...state,
+                toys: state.toys.map(toy =>
+                    toy._id === toyId
+                        ? { ...toy, msgs: [...(toy.msgs || []), msg] }
+                        : toy
+                )
+            }
+        }
+
 
         default:
             return state

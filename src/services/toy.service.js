@@ -13,6 +13,7 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
+    addMsg,
     getDefaultFilter,
     getRandomToy
 }
@@ -39,6 +40,10 @@ function save(toy) {
         return httpService.post(BASE_URL, toy)
     }
     // return toyServiceLocal.save(toy)
+}
+
+function addMsg(toyId, msg) {
+    return httpService.post(`toy/${toyId}/msg`, msg)
 }
 
 function getEmptyToy() {
